@@ -11,7 +11,7 @@ import studentsContainer from './containers/studentsContainer';
 import studentContainer from './containers/studentContainer';
 import Home from './components/Home';
 
-import { getCampuses, getStudents } from './action-creators';
+import { getCampuses, getStudents, getCampusById, getStudentById } from './action-creators';
 
 const onAppEnter = () => {
   const promisedCampuses = axios.get('api/campuses');
@@ -26,6 +26,16 @@ const onAppEnter = () => {
   })
 }
 
+const onStudentEnter = function (nextRouterState) {
+  const studentId = nextRouterState.params.studentId;
+  store.dispatch(getStudentById(studentId));
+
+};
+
+const onCampusEnter = function (nextRouterState) {
+  const campusId = nextRouterState.params.campusId;
+  store.dispatch(getCampusById(campusId));
+};
 export default function Routes () {
   return (
     <Provider store={store}>
@@ -33,9 +43,9 @@ export default function Routes () {
         <Route path="/home" component={Home} />
         <Route path="/" component={App} onEnter={onAppEnter}>
           <Route path="/campuses" component={campusesContainer} />
-          <Route path="/campus" component={campusContainer} />
+          <Route path="/campuses/:campusId" component={campusContainer} onEnter={onCampusEnter} />
           <Route path="/students" component={studentsContainer} />
-          <Route path="/student" component={studentContainer} />
+          <Route path="/students/:studentId" component={studentContainer} onEnter={onStudentEnter} />
           <IndexRedirect to="/home" />
         </Route>
       </Router>

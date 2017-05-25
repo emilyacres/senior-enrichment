@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
+import {React_Bootstrap_Carousel} from 'react-bootstrap-carousel';
+// import 'react-bootstrap-carousel/dist/bootstrap.min.css';
+// import 'react-bootstrap-carousel/dist/react-bootstrap-carousel.css';
 
 export default function Students (props) {
   const students = props.students;
@@ -24,8 +27,21 @@ export default function Students (props) {
         </div>
           <div className="col-lg-10">
             <h3>Our Students</h3>
-            <img src="/classstudent.jpg" className="studentImg" />
-            <ul>
+            <React_Bootstrap_Carousel
+            animation={true}
+            className="carousel-fade"
+            >
+              <div className="cImg">
+                <img src="students/startrek.jpg" />
+              </div>
+              <div className="cImg">
+                <img src="students/Futurama.png" />
+              </div>
+              <div className="cImg">
+                <img src="students/alien.jpg" />
+              </div>
+          </React_Bootstrap_Carousel>
+            <ul id="studentList">
               {
                 students && students.map( student => (
                   <li key={ student.id }>
@@ -52,3 +68,21 @@ export default function Students (props) {
     </div>
   );
 }
+
+
+
+
+
+          // <div id="studentCarousel" class="carousel slide" data-ride="carousel">
+          //     <div class="carousel-inner" role="listbox">
+          //       <div class="carousel-item active">
+          //         <img class="d-block img-fluid" src="/students/startrek.jpg" alt="First slide" />
+          //       </div>
+          //       <div class="carousel-item">
+          //         <img class="d-block img-fluid" src="/students/Futurama.png" alt="Second slide" />
+          //       </div>
+          //       <div class="carousel-item">
+          //         <img class="d-block img-fluid" src="/students/alien.jpg" alt="Third slide" />
+          //       </div>
+          //     </div>
+          //   </div>
