@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 const mapState = (state) => {
   //console.log(state)
   return {
-    // selectedStudent: state.selectedStudent,
-    // campuses: state.campuses
+    selectedStudent: state.selectedStudent,
+    campuses: state.campuses
   };
 };
 

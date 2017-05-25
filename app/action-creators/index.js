@@ -21,20 +21,3 @@ export const getStudent = student => ({
   student
 });
 
-export const getCampusById = campusId => {
-  return dispatch => {
-    axios.get(`api/campuses/${campusId}`)
-    .then(campusObj => {
-      dispatch(getCampus(campusObj.data))
-    });
-  };
-};
-
-export const getStudentById = studentId => {
-  return dispatch => {
-    axios.get(`api/students/${studentId}`)
-    .then(studentObj => {
-      dispatch(getStudent(studentObj.data))
-    });
-  };
-};

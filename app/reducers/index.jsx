@@ -22,11 +22,11 @@ const rootReducer = function(state = initialState, action) {
       break;
 
     case GET_STUDENT:
-      newState.selectedStudent = action.student.data;
+      newState.selectedStudent = action.student;
       break;
 
     case GET_CAMPUS:
-      newState.selectedCampus = action.campus.data;
+      newState.selectedCampus = action.campus;
       break;
 
     default: return state

@@ -17,7 +17,6 @@ export default function Students (props) {
       name: myCampus[0].name,
       id: myCampus[0].id
     };
-
   }
 
   return (
