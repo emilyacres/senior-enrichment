@@ -1,3 +1,20 @@
 #logo {
-  height: 100px;
+  height: 80px;
+}
+.row img {
+  width: 100%;
+}
+.navbar {
+  clear: both;
+}
+.homeLogo{
+  margin-top: 80px;
+}
+.headerLinks {
+  text-align: center;
+  margin-top: 70px;
+}
+.studentImg {
+  margin-top: 25px;
+  margin-bottom: 50px;
 }

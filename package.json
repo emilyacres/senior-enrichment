@@ -4,6 +4,7 @@
   "description": "A review time project",
   "main": "index.js",
   "scripts": {
+    "seed": "node seed",
     "test": "mocha **/*.test.js *.test.js",
     "build": "webpack",
     "build-watch": "webpack -w",

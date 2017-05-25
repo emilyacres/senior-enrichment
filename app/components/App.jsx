@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import NavBar from './NavBar';
 
-export default class App extends Component {
-
-  render () {
-    return (
+export default function App ({ children }) {
+  return (
+    <div>
+      <NavBar />
       <div className="container-fluid">
-        <NavBar />
+        { children }
       </div>
-    );
-  }
+    </div>
+  );
 }
-
-
 
 
 
