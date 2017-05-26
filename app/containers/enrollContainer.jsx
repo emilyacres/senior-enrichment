@@ -1,5 +1,5 @@
 import Enroll from '../components/Enroll';
-import { connect } from 'react-redux';
+import { connect, browserHistory } from 'react-redux';
 import { postStudent } from '../action-creators'
 import React, { Component } from 'react';
 
@@ -79,13 +79,14 @@ class newStudentContainer extends Component {
       return campus.name === value;
     })
 
-    event.preventDefault();
+    //event.preventDefault();
     this.props.postStudent({
       name: this.state.nameInput,
       email: this.state.emailInput,
       bio: this.state.bioInput,
       campusId: this.state.campusId
     })
+    browserHistory.push('/thanks')
   }
 
   render () {

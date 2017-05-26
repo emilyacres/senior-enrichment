@@ -42,16 +42,16 @@ export default function Students (props) {
             <ul id="studentList">
               {
                 students && students.map( student => (
-                  <li key={ student.id }>
+                  <li className="studentLi" key={ student.id }>
                     <div className="caption">
                       <Link to={`/students/${student.id}`}>
-                        <h4>
+                        <h4 className="inline">
                           <span>{ student.name }</span>
                         </h4>
                       </Link>
                       <Link to={`/campuses/${findCampus(student).id}`}>
-                        <small>
-                          ({ findCampus(student).name } Campus)
+                        <small className="inline">
+                          (<span className="text-danger">{ findCampus(student).name } Campus</span>)
                         </small>
                       </Link>
                     </div>

@@ -20,20 +20,27 @@ export default function Student (props) {
   return (
     campuses.length ? (
 
-    <div className="row">
-      <h2>Admin Delete Campus</h2>
-      <form className="form-group" onSubmit={handleDelete}>
-        <div className="form-group" id="campusMenu">
-          <select className="form-group" onChange={handleChange}>
-          {
-             campuses.map(campus => (
-                <option value={campus.id} key={campus.id}>{campus.name}</option>
-              ))
-          }
-          </select>
-          <button type="submit" className="btn btn-info campusButton">Switch campus</button>
-        </div>
-      </form>
+    <div className="row admin">
+      <div className="col-lg-2">
+      </div>
+      <div className="col-lg-4">
+        <h2>Admin Delete Campus</h2>
+        <form className="form-group" onSubmit={handleDelete}>
+          <div className="form-group" id="campusMenu">
+            <select className="form-group" onChange={handleChange}>
+            {
+               campuses.map(campus => (
+                  <option value={campus.id} key={campus.id}>{campus.name}</option>
+                ))
+            }
+            </select>
+            <button type="submit" className="btn btn-danger campusButton">Delete campus</button>
+          </div>
+        </form>
+      </div>
+      <div className="col-lg-3">
+        <img src="/planetary.png" />
+      </div>
     </div>
 
     ) : null

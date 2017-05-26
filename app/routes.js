@@ -1,6 +1,7 @@
 import React from 'react';
 import { Router, Route, hashHistory, IndexRedirect, IndexRoute } from 'react-router';
-import { Provider } from 'react-redux';
+
+import { Provider, browserHistory } from 'react-redux';
 import axios from 'axios';
 
 import store from './store';

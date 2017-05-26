@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
+
 
 
 export default function Student (props) {
@@ -35,6 +36,7 @@ export default function Student (props) {
       student: selectedStudent.id
     }
     updateStudent(updateObj);
+    browserHistory.push('/congratulations');
   }
 
   return (
