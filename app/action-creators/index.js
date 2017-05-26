@@ -1,4 +1,4 @@
-import { GET_CAMPUSES, GET_STUDENTS, GET_CAMPUS, GET_STUDENT, ADD_STUDENT } from '../constants';
+import { GET_CAMPUSES, GET_STUDENTS, GET_CAMPUS, GET_STUDENT, ADD_STUDENT, DELETE_CAMPUS } from '../constants';
 import axios from 'axios';
 
 export const getCampuses = campuses => ({
@@ -26,7 +26,14 @@ export const addStudent = student => ({
   student
 });
 
+export const deleteCampus = campuses => ({
+  type: DELETE_CAMPUS,
+  campuses
+});
+
+
 export const postStudent = student => {
+  console.log(student)
   return (dispatch, getState) => {
     return axios.post('/api/students', {
       name: student.name,
@@ -42,3 +49,49 @@ export const postStudent = student => {
   }
 }
 
+export const updateStudent = obj => {
+  const campusId = obj.campus;
+  const studentId = obj.student
+  console.log("action creator")
+  return (dispatch, getState) => {
+    console.log("axios")
+    return axios.put(`/api/students/${studentId}`, {
+      campus_id: campusId
+    })
+    .then(res => res.data)
+    .then(students => {
+      // const newStudents = getState().students.concat([student]);
+      dispatch(addStudent(students));
+    })
+  }
+}
+
+export const deleteStudent = student => {
+  console.log("axios")
+  return (dispatch, getState) => {
+    return axios.delete(`/api/students/${student.id}`, {
+      id: student.id
+    })
+    .then(() => {
+      const newStudents = getState().students.filter(arrStudent => {
+        return arrStudent.id !== student.id;
+      });
+      dispatch(addStudent(newStudents));
+    })
+  }
+}
+
+export const destroyCampus = campusId => {
+  //console.log("axios")
+  return (dispatch, getState) => {
+    return axios.delete(`/api/campuses/${campusId}`, {
+      id: campusId
+    })
+    .then(() => {
+      const newCampuses = getState().campuses.filter(arrCampus => {
+        return arrCampus.id !== campusId
+      });
+      dispatch(deleteCampus(newCampuses));
+    })
+  }
+}

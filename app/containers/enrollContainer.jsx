@@ -11,7 +11,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    postStudent (student) {
+    postStudent: (student) => {
       dispatch(postStudent(student));
     }
   };
@@ -74,7 +74,7 @@ class newStudentContainer extends Component {
 
   handleSubmit (event) {
     const value = event.target.value;
-    //console.dir(value)
+    console.dir(value)
     const campus = this.props.campuses.filter(campus => {
       return campus.name === value;
     })

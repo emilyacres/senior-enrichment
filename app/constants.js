@@ -5,3 +5,4 @@ export const GET_CAMPUS = 'GET_CAMPUS';
 export const GET_STUDENT = 'GET_STUDENT';
 
 export const ADD_STUDENT = 'ADD_STUDENT';
+export const DELETE_CAMPUS = 'DELETE_CAMPUS';

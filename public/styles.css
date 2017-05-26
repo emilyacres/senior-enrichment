@@ -63,3 +63,28 @@ select{
   border-radius: 5%;
   border: 1px #ce9a00 solid;
 }
+.buttons {
+  vertical-align: bottom;
+  text-align: bottom;
+}
+.thanks {
+  text-align: center;
+}
+.backToHome {
+  text-align: center;
+  width: 100%;
+  vertical-align: bottom;
+  margin-top: 20px;
+}
+.homeButton {
+  margin-top: 100px;
+}
+.thanksLogo {
+  width: 60% !important;
+}
+.hidden {
+  display: hidden;
+}
+.campusButton {
+  margin-left: 10px;
+}

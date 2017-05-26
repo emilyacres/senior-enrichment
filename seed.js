@@ -74,7 +74,7 @@ const students = [{
       campus_id: 3
     }]
 
-//db.sync({force:true});
+db.sync({force:true});
 
 db.didSync
 .then(() => {

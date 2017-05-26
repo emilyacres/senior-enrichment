@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { GET_CAMPUSES, GET_STUDENTS, GET_STUDENT, GET_CAMPUS, ADD_STUDENT } from '../constants';
+import { GET_CAMPUSES, GET_STUDENTS, GET_STUDENT, GET_CAMPUS, ADD_STUDENT, DELETE_CAMPUS } from '../constants';
 
 const initialState = {
   campuses: [],
@@ -30,8 +30,11 @@ const rootReducer = function(state = initialState, action) {
       break;
 
     case ADD_STUDENT:
-    console.log(action)
       newState.students = action.student;
+      break;
+
+    case DELETE_CAMPUS:
+      newState.campuses = action.campuses;
       break;
 
     default: return state

@@ -1,20 +1,41 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-//console.log(state)
+
 export default function Student (props) {
+  const deleteStudent = props.deleteStudent;
+  const updateStudent = props.updateStudent;
   const selectedStudent = props.selectedStudent;
   const campuses = props.campuses;
+  let newCampus;
   //console.log(selectedStudent);
   const findCampus = (student) => {
     const myCampus = campuses.filter(campus => {
       return +student.campus_id === +campus.id;
     })
     return {
-      name: myCampus[0].name,
-      id: myCampus[0].id
+      name: myCampus[0].name || 'Remote',
+      id: myCampus[0].id || ''
     };
   };
+
+
+  const handleDelete = (event) => {
+    deleteStudent(selectedStudent)
+  }
+
+  const handleChange = (event) => {
+    newCampus = event.target.value;
+  }
+
+  const handleUpdate = (event) => {
+    event.preventDefault();
+    const updateObj = {
+      campus: newCampus,
+      student: selectedStudent.id
+    }
+    updateStudent(updateObj);
+  }
 
   return (
     selectedStudent.name ? (
@@ -36,6 +57,31 @@ export default function Student (props) {
             <p>
               {selectedStudent.bio}
             </p>
+          </div>
+          <div className="buttons">
+            <div>
+              <p>Looking for a new frontier?</p>
+              <form className="form-group" onSubmit={handleUpdate}>
+                <div className="form-group" id="campusMenu">
+                  <select className="form-group" onChange={handleChange}>
+                  {
+                     campuses.map(campus => (
+                        <option value={campus.id} key={campus.id}>{campus.name}</option>
+                      ))
+                  }
+                  </select>
+                  <button type="submit" className="btn btn-info campusButton">Switch campus</button>
+                </div>
+              </form>
+            </div>
+            <div>
+              <h4 className="graduate">Ready to graduate?</h4>
+              <div className="form-group" onClick={handleDelete}>
+                <Link to="/congratulations"><button type="submit" className="btn btn-warning btn-lg">Unenroll</button></Link>
+              </div>
+            </div>
+            <div>
+            </div>
           </div>
       </div>
       <div className="col-lg-2">

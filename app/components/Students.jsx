@@ -13,8 +13,8 @@ export default function Students (props) {
       return +student.campus_id === +campus.id;
     })
     return {
-      name: myCampus[0].name,
-      id: myCampus[0].id
+      name: myCampus[0].name || 'Campus',
+      id: myCampus[0].id || ''
     };
   }
 
@@ -51,7 +51,7 @@ export default function Students (props) {
                       </Link>
                       <Link to={`/campuses/${findCampus(student).id}`}>
                         <small>
-                          { findCampus(student).name } Campus
+                          ({ findCampus(student).name } Campus)
                         </small>
                       </Link>
                     </div>
