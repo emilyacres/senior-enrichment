@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 
 const mapState = (state) => {
   return {
+    students: state.students,
+    campuses: state.campuses,
+    selectedCampus: state.selectedCampus
   };
 };
 

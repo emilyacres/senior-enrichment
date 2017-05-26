@@ -9,6 +9,7 @@ import campusesContainer from './containers/campusesContainer';
 import campusContainer from './containers/campusContainer';
 import studentsContainer from './containers/studentsContainer';
 import studentContainer from './containers/studentContainer';
+import enrollContainer from './containers/enrollContainer';
 import Home from './components/Home';
 
 import { getCampuses, getStudents, getCampus, getStudent } from './action-creators';
@@ -53,6 +54,7 @@ export default function Routes () {
           <Route path="/campuses/:campusId" component={campusContainer} onEnter={onCampusEnter} />
           <Route path="/students" component={studentsContainer} />
           <Route path="/students/:studentId" component={studentContainer} onEnter={onStudentEnter} />
+          <Route path="/enroll" component={enrollContainer} />
           <IndexRedirect to="/home" />
         </Route>
       </Router>

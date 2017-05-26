@@ -29,3 +29,37 @@
 .studentProfile {
   text-align: right;
 }
+.header {
+  color: #ce9a00;
+  margin-bottom: 15px;
+}
+.join {
+  text-align: right;
+  margin-right: 18%;
+}
+select{
+  width: 200px;
+}
+.navApply {
+  margin: 10px 30px 0px 50px;
+  padding-top: 0px;
+  height: 10px;
+  font-size: 125% !important;
+}
+.campusLabel {
+  margin-right: 30px;
+}
+.planetTxt {
+  text-align: right;
+  font-style: italic;
+}
+.solar {
+  font-style: italic;
+}
+.enrollment {
+  color: #cb4b16;
+}
+.campusImg {
+  border-radius: 5%;
+  border: 1px #ce9a00 solid;
+}

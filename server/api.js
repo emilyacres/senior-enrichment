@@ -32,6 +32,19 @@ api.get('/students/:studentId', (req, res, next) => {
   .catch(console.error)
 })
 
+api.get('/campuses/:campusId', (req, res, next) => {
+  const campusId = req.params.campusId;
+  Campuses.findOne({
+    where: {
+      id: campusId
+    }
+  })
+  .then(function(campus){
+    res.send(campus);
+  })
+  .catch(console.error)
+})
+
 api.get('/campuses', (req, res, next) => {
   Campuses.findAll({})
   .then(function(data){
@@ -50,6 +63,15 @@ api.get('/students', (req, res, next) => {
       return student.dataValues;
     });
     res.send(data);
+  })
+  .catch(console.error)
+})
+
+api.post('/students', (req, res, next) => {
+  Students.create(req.body)
+  .then(student => {
+    res.sendStatus(201)
+    res.send(student)
   })
   .catch(console.error)
 })

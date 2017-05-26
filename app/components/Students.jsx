@@ -7,7 +7,6 @@ import {React_Bootstrap_Carousel} from 'react-bootstrap-carousel';
 export default function Students (props) {
   const students = props.students;
   const campuses = props.campuses;
-  console.log(students)
 
   const findCampus = (student) => {
     const myCampus = campuses.filter(campus => {
@@ -25,7 +24,7 @@ export default function Students (props) {
         <div className="col-lg-1">
         </div>
           <div className="col-lg-10">
-            <h3>Our Students</h3>
+            <h2 className="header">Our Students</h2>
             <React_Bootstrap_Carousel
             animation={true}
             className="carousel-fade"

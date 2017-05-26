@@ -12,6 +12,7 @@ export default function NavBar () {
         <ul className="nav navbar-nav navbar-right">
           <li className="navbar-brand"><Link to="/campuses">Our Campuses</Link></li>
           <li className="navbar-brand"><Link to="/students">Our Students</Link></li>
+          <li className="navbar-brand navApply label label-warning"><Link to="/enroll">Apply</Link></li>
         </ul>
       </div>
     </nav>

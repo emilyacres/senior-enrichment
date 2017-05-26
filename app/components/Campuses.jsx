@@ -3,10 +3,9 @@ import { Link } from 'react-router';
 
 export default function Campuses (props) {
   const campuses = props.campuses;
-  console.log(campuses)
   return (
     <div>
-      <h3>Our Campuses</h3>
+      <h2 className="header">Our Campuses</h2>
       <div className="row">
         {
           campuses && campuses.map( campus => (

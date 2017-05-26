@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 export default function Student (props) {
   const selectedStudent = props.selectedStudent;
   const campuses = props.campuses;
-  console.log(selectedStudent);
+  //console.log(selectedStudent);
   const findCampus = (student) => {
     const myCampus = campuses.filter(campus => {
       return +student.campus_id === +campus.id;
@@ -27,13 +27,14 @@ export default function Student (props) {
       </div>
       <div className="col-lg-4 studentProfile">
           <div className="studentTitle">
-            <h2>{selectedStudent.name}</h2>
+            <h2 className="header">{selectedStudent.name}</h2>
             <Link to={`/campuses/${findCampus(selectedStudent).id}`}>
               <h4>{findCampus(selectedStudent).name} Campus</h4>
             </Link>
           </div>
           <div>
             <p>
+              {selectedStudent.bio}
             </p>
           </div>
       </div>

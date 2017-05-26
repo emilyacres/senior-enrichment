@@ -3,34 +3,6 @@ const db = require('./db');
 const Campus = require('./db/models').Campus;
 const Student = require('./db/models').Student;
 
-// db.sync({force:true})
-// .then(function(){
-//   Campus.bulkCreate([
-//     {
-//       id: 1,
-//       name: 'Europa',
-//       image: 'https://upload.wikimedia.org/wikipedia/commons/5/54/Europa-moon.jpg'
-//     },{
-//       id: 2,
-//       name: 'Omicron Persei 8',
-//       image: 'http://web.mit.edu/puzzle/www/2009/puzzles/our_crew_is_replaceable_your_package_isnt/PUZZLE/Lazry3_Omicron_Persei_8.jpg'
-//     }
-//   ])
-// })
-// .then(function(){
-//   Student.bulkCreate([
-//     {
-//       name: 'Peter Parker',
-//       email: 'webmaster@hotmail.com',
-//       campus_id: 1
-//     },{
-//       name: 'Leeloominaï Lekatariba Lamina-Tchaï Ekbat De Sebat',
-//       email: 'leeloo@gmail.com',
-//       campus_id: 2
-//     }
-//   ])
-// })
-// .catch(console.error);
 
 const campuses = [{
       name: 'Europa',
@@ -102,30 +74,33 @@ const students = [{
       campus_id: 3
     }]
 
+//db.sync({force:true});
 
-
-db.sync({force:true})
-.then(() => campuses.map(campus => Campus.create(campus)
-))
+db.didSync
 .then(() => {
-  console.log('Synced');
-})
-//   Student.create({
-//       name: 'Peter Parker',
-//       email: 'webmaster@hotmail.com',
-//       campus_id: Campus.create({
-//         name: 'Omicron Persei 8',
-//         image: 'http://web.mit.edu/puzzle/www/2009/puzzles/our_crew_is_replaceable_your_package_isnt/PUZZLE/Lazry3_Omicron_Persei_8.jpg'
-//       })
-//     })
-
-// }).then(() => console.log("created"))
+    const promisedCampuses = campuses.map(campus => Campus.create(campus))
+    return Promise.all(promisedCampuses)
+    .then(() => {
+      const promisedStudents = students.forEach(student => Student.create(student))
+      return Promise.all(promisedStudents)
+    })
+  }
+)
 // .catch(console.error)
+// .finally(() => {
+//   db.close();
+// })
 
-// const promisedCampuses = campuses.map(campus => {
-//   return Campus.create(campus);
-// });
-
-// const promisedStudents = students.map(student => {
-//   return Student.create(student);
+// db.didSync
+// .then(() => {
+//   return Campus.create({
+//     name: 'Europa',
+//     image: 'planets/Europa.jpg',
+//     galaxy: 'Milky Way',
+//     system: 'Earth',
+//   })
+// })
+// .catch(console.error)
+// .finally(() => {
+//   db.close();
 // })
