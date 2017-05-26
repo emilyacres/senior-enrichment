@@ -1,7 +1,7 @@
 import React from 'react';
 import { Router, Route, hashHistory, IndexRedirect, IndexRoute } from 'react-router';
 
-import { Provider, browserHistory } from 'react-redux';
+import { Provider } from 'react-redux';
 import axios from 'axios';
 
 import store from './store';
@@ -45,6 +45,7 @@ const onCampusEnter = function (nextRouterState) {
   axios.get(`api/campuses/${campusId}`)
   .then(function(campusData){
     campusData = campusData.data;
+    console.log('fetched campuses: ', campusData);
     store.dispatch(getCampus(campusData))
   })
 };

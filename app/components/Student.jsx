@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, browserHistory } from 'react-router';
+import { Link, hashHistory  } from 'react-router';
 
 
 
@@ -22,7 +22,8 @@ export default function Student (props) {
 
 
   const handleDelete = (event) => {
-    deleteStudent(selectedStudent)
+    deleteStudent(selectedStudent);
+    hashHistory.push('/congratulations');
   }
 
   const handleChange = (event) => {
@@ -36,7 +37,7 @@ export default function Student (props) {
       student: selectedStudent.id
     }
     updateStudent(updateObj);
-    browserHistory.push('/congratulations');
+
   }
 
   return (
@@ -79,7 +80,7 @@ export default function Student (props) {
             <div>
               <h4 className="graduate">Ready to graduate?</h4>
               <div className="form-group" onClick={handleDelete}>
-                <Link to="/congratulations"><button type="submit" className="btn btn-warning btn-lg">Unenroll</button></Link>
+                <button type="submit" className="btn btn-warning btn-lg">Unenroll</button>
               </div>
             </div>
             <div>

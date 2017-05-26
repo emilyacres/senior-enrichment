@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link, hashHistory } from 'react-router';
 
 
 export default function Student (props) {
@@ -9,11 +9,13 @@ export default function Student (props) {
   let campusToDestroy;
 
   const handleChange = (event) => {
+    console.log(event.target.value)
     campusToDestroy = event.target.value;
   }
 
   const handleDelete = (event) => {
     destroyCampus(campusToDestroy)
+    //hashHistory.push('/campuses')
   }
 
 

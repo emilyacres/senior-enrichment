@@ -1,5 +1,6 @@
 import { GET_CAMPUSES, GET_STUDENTS, GET_CAMPUS, GET_STUDENT, ADD_STUDENT, DELETE_CAMPUS } from '../constants';
 import axios from 'axios';
+import { hashHistory } from 'react-router'
 
 export const getCampuses = campuses => ({
   type: GET_CAMPUSES,
@@ -88,10 +89,15 @@ export const destroyCampus = campusId => {
       id: campusId
     })
     .then(() => {
+      const oldCampuses = getState().campuses;
+      console.log('old', oldCampuses.length);
       const newCampuses = getState().campuses.filter(arrCampus => {
-        return arrCampus.id !== campusId
+        return +arrCampus.id !== +campusId
       });
+      console.log('new', newCampuses.length);
       dispatch(deleteCampus(newCampuses));
+      console.log('deleted campus, pushing to campuses');
+      hashHistory.push('/campuses');
     })
   }
 }

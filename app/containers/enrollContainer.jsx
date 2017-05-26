@@ -1,12 +1,13 @@
 import Enroll from '../components/Enroll';
-import { connect, browserHistory } from 'react-redux';
+import { hashHistory } from 'react-router';
+import { connect } from 'react-redux';
 import { postStudent } from '../action-creators'
 import React, { Component } from 'react';
 
 const mapState = (state) => {
-    return{
+  return{
       campuses: state.campuses
-    }
+  }
 };
 
 const mapDispatch = (dispatch) => {
@@ -59,13 +60,8 @@ class newStudentContainer extends Component {
   }
 
    handleCampus (event) {
-    //event.preventDefault();
     const value = event.target.value;
     console.dir(value)
-    // const campus = this.props.campuses.filter(campus => {
-    //   return campus.name === value;
-    // })
-
       this.setState({
         campusId: value
       })
@@ -79,14 +75,14 @@ class newStudentContainer extends Component {
       return campus.name === value;
     })
 
-    //event.preventDefault();
+    event.preventDefault();
     this.props.postStudent({
       name: this.state.nameInput,
       email: this.state.emailInput,
       bio: this.state.bioInput,
       campusId: this.state.campusId
     })
-    browserHistory.push('/thanks')
+    hashHistory.push('/thanks')
   }
 
   render () {
